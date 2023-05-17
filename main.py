@@ -59,3 +59,33 @@ model = TSNE(perplexity=25, learning_rate=0.5)
 N = model.fit_transform(X)
 plt.scatter(N[:, 0], N[:, 1], c=digits.target[:200])
 plt.show()
+
+################################
+#                   PCA
+################################
+from pca import PCA
+# from sklearn.decomposition import PCA
+digits = datasets.load_digits()
+X = digits.data[:200, :]
+
+pca = PCA(n_components=2)
+pca.fit(X)
+X = pca.transform(X)
+
+plt.scatter(X[:, 0], X[:, 1], c=digits.target[:200])
+plt.show()
+
+
+################################
+#                  MDS
+################################
+from mds import MDS
+# from sklearn.manifold import MDS
+digits = datasets.load_digits()
+X = digits.data[:200, :]
+
+model = MDS()
+N = model.fit_transform(X)
+plt.scatter(N[:, 0], N[:, 1], c=digits.target[:200])
+plt.show()
+
